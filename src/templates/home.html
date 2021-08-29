@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock title %}
+
+{% block content %}
+    <h1>Bienvenido a WallPy</h1>
+    <h4>La app amiga que te ayudará a Gestionar tus Gastos y tu vida </h4>
+    <aside class="" style="width: 20%; float: right; display: inline-block;">
+            <a class="weatherwidget-io" href="https://forecast7.com/es/n27d45n58d99/resistencia/" data-label_1="RESISTENCIA" data-label_2="WEATHER" data-theme="original" >Clima en RESISTENCIA</a>
+            <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+            </script>	
+    </aside>
+
+    <div style="width: 55%; margin: auto; display: inline-block;">
+        <img src="{% static 'images/bro.svg' %}">
+    </div>
+{% endblock content %}
