@@ -6,10 +6,10 @@ _Se dispone de un cuestionario con opciones multi choise,en dónde el jugador pu
 
 ### Pre-requisitos 📋
 
-_Instalar las dependencias del proyecto mediante la carpeta requirements, la cual contiene elementos necesarios para el funcionamiento del sitio: el programa django,conector a la base de datos, libreria,etc,_
+_Instalar las dependencias del proyecto mediante la carpeta requirements (contiene archivo base.txt), la cual contiene elementos necesarios para el funcionamiento del sitio: el programa django,conector a la base de datos, libreria,etc,_
 
 ```
-pip install -r requirements.txt 
+pip install -r requirements/base.txt 
 ```
 
 ## Construido con 🛠️
