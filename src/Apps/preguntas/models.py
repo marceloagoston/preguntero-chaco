@@ -13,7 +13,7 @@ class Categoria(models.Model):
 	slug=models.SlugField(default='Nada')
 	
 	class Meta:
-		db_table = 'Categorias'
+		db_table = 'categorias'
 
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.nombre)
@@ -34,7 +34,7 @@ class Pregunta(TimeStampedModel):
 	dificultad = models.CharField(max_length=1,choices=select_tipo,default='1')
 
 	class Meta:
-		db_table = 'Preguntas'
+		db_table = 'preguntas'
 
 	def __str__(self):
 		return self.nombre[:50]
@@ -46,7 +46,7 @@ class OpcionPregunta(models.Model):
 	pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
 	
 	class Meta:
-		db_table = 'Opciones_Preguntas'
+		db_table = 'opciones_preguntas'
 
 	def __str__(self):
 		return self.consigna[:50]
