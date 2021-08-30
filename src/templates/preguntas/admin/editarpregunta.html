@@ -1,0 +1,29 @@
+{% extends 'baseAdmin.html' %}
+
+{% block content %}
+
+<div class="row mb-2">
+	<div class="col-sm-6">
+	  <h1 class="m-0">Editar Pregunta</h1>
+	</div><!-- /.col -->
+	<div class="col-sm-6">
+	  <ol class="breadcrumb float-sm-right">
+		<li class="breadcrumb-item">Administración</li>
+		<li class="breadcrumb-item">Preguntas</li>
+		<li class="breadcrumb-item active">Editar Pregunta</li>
+	  </ol>
+	</div><!-- /.col -->
+  </div><!-- /.row -->
+
+	<hr>
+		<form action="" method="post">{% csrf_token %}
+			{% include "includes/_form_errors.html" %}
+	        {% include "includes/_forms.html" %}
+			<hr>
+			<div class="ag-flex-space">
+				<a href="{% url 'lista_preguntas' %}" class="btn btn-outline-primary ag">Cancelar</a>
+				<button class="btn btn-primary ml- ag-float-right" type="submit">Guardar</button>
+			</div>
+		
+	</form>
+{%endblock%}

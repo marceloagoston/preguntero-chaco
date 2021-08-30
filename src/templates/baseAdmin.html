@@ -26,6 +26,12 @@
   <link rel="stylesheet" href="{% static 'lib/adminlt3/plugins/daterangepicker/daterangepicker.css' %}">
   <!-- summernote -->
   <link rel="stylesheet" href="{% static 'lib/adminlt3/plugins/summernote/summernote-bs4.min.css' %}">
+
+  <!-- Data-tables js -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/datatables.min.css"/>
+
+  <!-- Propios -->
+  <link type="text/css" href="{% static 'css/admin/base.css' %}" rel="stylesheet">s
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -105,7 +111,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{% url 'home' %}" class="brand-link">
+    <a href="{% url 'adminHome' %}" class="brand-link">
       <img src="{% static 'images/logo.png'%}" alt="Logo RUAI" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Trivia Chaco Admin.</span>
     </a>
@@ -135,7 +141,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="{% url 'lista_preguntas' %}" class="nav-link">
                   <i class="fas fa-database"></i>
                   <p>Banco de preguntas</p>
                 </a>
@@ -184,11 +190,18 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
-  {% block content %}
-  {% endblock content %}
-       
+ 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        {% block content %}
+        {% endblock content %}
+      </div>
+    </div>
+  </div>     
   <!-- /.content-wrapper -->
+  
   <footer class="main-footer" style="bottom: 0; left: 0; position: fixed; right: 0; z-index: 1032;">
     <strong>Copyright &copy; 2021 Grupo 3 - Comisión 4 - Informatorio 2021.</strong>
     All rights reserved.
@@ -239,5 +252,14 @@
 <script src="{% static 'lib/adminlt3/js/demo.js' %}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{% static 'lib/adminlt3/js/pages/dashboard.js' %}"></script>
+
+<!-- Data-tables.js -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/b-1.7.0/b-html5-1.7.0/datatables.min.js"></script>
+
+{% block js %}
+{% endblock %}
+
 </body>
 </html>

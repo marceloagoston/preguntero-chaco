@@ -1,0 +1,38 @@
+.ag-alinear-texto-der{
+	text-align: right;
+}
+.ag-form-container{
+	background: white;
+	padding: 10%;
+	border-radius: 15px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, .2);
+}
+
+.ag-cent-elem{
+	width: 50%;
+	margin: auto;
+}
+
+.izq{
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 2%;
+}
+
+.ag-flex-space{
+	display: flex !important;
+	justify-content: space-between !important;
+	align-items: center;
+}
+
+@media (max-width: 960px) {
+    .ag-form-container{
+        width: 90%;
+    }
+
+    .ag-cent-elem-vert{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
