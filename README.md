@@ -24,7 +24,7 @@ _ Las herramientas utilizadas para desarrollar el proyecto son las siguientes: _
 ## Autores ✒️ (agregarse y colocar lo que corresponda )
 
 * **Marcelo Agoston** - *Programacion* - [marceloagoston](https://github.com/marceloagoston)
-* **Cesar Martinetti** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
+* **Cesar Martinetti** - *Documentación* - [SnkCesar](https://github.com/SnkCesar)
 
 * **Gladys Hardy** - *Diagram.MER y Tablas* - [GLADYSHARDY](https://github.com/GLADYSHARDY)
 * ** Rodrigo Gomez** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
