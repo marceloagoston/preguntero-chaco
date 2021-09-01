@@ -1,4 +1,4 @@
-# CONOCIENDO MI CHACO 
+﻿# CONOCIENDO MI CHACO 
 
 _El sitio contiene un ameno y divertido juego que consiste en una serie de preguntas de cultura general y sus respectivas respuestas que giran entorno a la Provincia del Chaco._
 
@@ -25,7 +25,7 @@ _ Las herramientas utilizadas para desarrollar el proyecto son las siguientes: _
 
 * **Marcelo Agoston** - *Programacion* - [marceloagoston](https://github.com/marceloagoston)
 * **Cesar Martinetti** - *Documentación* - [SnkCesar](https://github.com/SnkCesar)
-
+* **Marcos Sanchez** - *Documentación* - [MarkSanch](https://github.com/MarkSanch/Comision4_Grupo3)
 * **Gladys Hardy** - *Diagram.MER y Tablas* - [GLADYSHARDY](https://github.com/GLADYSHARDY)
 * ** Rodrigo Gomez** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
 
