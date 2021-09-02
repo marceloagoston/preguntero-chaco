@@ -16,9 +16,19 @@ pip install -r requirements/base.txt
 
 _ Las herramientas utilizadas para desarrollar el proyecto son las siguientes: _
 
-* [Django](http://www.django.com) - El framework web usado
-* [PostgreSQL](https://www.posgresql.com/) - Base de Datos 
-* [PyPI](https://www.PyPI.org.com) - Repositorio de 		   software oficial para aplicaciones
+* [Python](http://www.python.org) - Lenguaje de programación
+									empleado
+* [Django](https://www.djangoproject.com) -  El framework
+											 usado
+* [PostgreSQL](https://www.posgresql.org/) - Base de Datos 
+
+* [MySQL](https://www.mysql.com/) - Base de Datos 
+
+* [PyPI](https://www.PyPI.org.com) - Repositorio de 	                                     software oficial pa- 
+									 ra aplicaciones
+
+* [Canva](https://www.canva.com) - Web de diseño gráfico
+
 
 
 ## Autores ✒️ (agregarse y colocar lo que corresponda )
@@ -27,14 +37,12 @@ _ Las herramientas utilizadas para desarrollar el proyecto son las siguientes: _
 * **Cesar Martinetti** - *Documentación* - [SnkCesar](https://github.com/SnkCesar)
 * **Marcos Sanchez** - *Documentación* - [MarkSanch](https://github.com/MarkSanch/Comision4_Grupo3)
 * **Gladys Hardy** - *Diagram.MER y Tablas* - [GLADYSHARDY](https://github.com/GLADYSHARDY)
-* ** Rodrigo Gomez** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
+* ** Rodrigo Gomez** - *Documentación* - [rg301190](https://github.com/rg301190)
 
-* **fulanito** - * tarea realizada* - [fulanitodetal](https://github.com/fulanito-de-tal)
-* ** fulanito ** - *tarea realizada* - [fulanitodetal](https://github.com/fulanito-de-tal)
 
  
 
 
 
----
+
 ⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
