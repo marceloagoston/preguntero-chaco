@@ -1,6 +1,15 @@
 {% extends 'baseAdmin.html' %}
 
 {% block content %}
+<style>
+	th, td{
+		text-align: center;
+	}
+</style>
+
+<div id="snackbar" class="alert alert-success text-center" role="alert" style="width: 100%; margin: auto; margin-bottom: 2%; display: none;">
+	<button type=button" class="close" data-dismiss="alert"><i class="fas fa-times"></i><button>
+</div>
 
 <div class="row mb-2">
 	<div class="col-sm-6">
@@ -20,10 +29,152 @@
 			{% include "includes/_form_errors.html" %}
 	        {% include "includes/_forms.html" %}
 			<hr>
+
+			<div>
+				<h4>Opciones de pregunta</h4>
+
+				<div class="izq">
+					<a href="" id="nuevo_elemento" class="btn btn-primary" data-toggle="modal" data-target="#modalOpciones"><i class="fas fa-plus-circle"></i> Nueva Opción</a>
+				</div>
+
+				{% if opcionesPregunta %}
+					<table id="tablajs" class="table table-striped tab_resp">
+						<thead>
+						<tr>
+							<th scope="col">Consigna</th>
+							<th scope="col">Opción Correcta</th>
+							<th scope="col">Acciones</th>
+						</tr>
+						</thead>
+	
+						<tbody>
+						{% for opcion in opcionesPregunta %}
+							<tr>	      
+								<td><a href="">{{opcion.consigna}}</a></td>
+								<td>
+									{% if opcion.correcta %}
+										Si
+									{% else %}
+										No
+									{% endif %}
+								</td>
+								<td class="ag-alinear-texto-der">
+									<!-- Inicio Boton Acciones -->
+									<div class="dropleft">
+										<button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-cogs"></i>
+										</button>
+										
+										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+											<h6 class="dropdown-header">Acciones de Opción Pregunta</h6>
+											<a class="dropdown-item" href="" title="Editar de Opción Pregunta"><i class="far fa-edit"></i> Editar de Opción Pregunta</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="" title="Eliminar de Opción Pregunta"> <i class="far fa-trash-alt"></i> Eliminar de Opción Pregunta</a>
+										</div>
+									</div>
+									<!-- Fin boton Acciones -->
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<p class="text-secondary text-center">- Esta pregunta no tiene opciones cargadas aún -</p>
+				{% endif %}
+			</div>
+
+			<hr>
 			<div class="ag-flex-space">
 				<a href="{% url 'lista_preguntas' %}" class="btn btn-outline-primary ag">Cancelar</a>
 				<button class="btn btn-primary ml- ag-float-right" type="submit">Guardar</button>
 			</div>
-		
 	</form>
+
+	<!-- Modal Opcion preguntas -->
+	<div class="modal fade" id="modalOpciones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Agregar Normativa de Implementación</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<form action="" method="post" id="modalAltaOpciones" data-post-url="{% url 'agregar_opcion' object.pk %}" enctype="multipart/form-data">
+						{% csrf_token %}
+						{% for field in formOpcionesPregunta  %}
+							<div class="form-group">
+								{{field.label_tag}}<br>
+								{{field}}
+							</div>
+						{% endfor %}
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-info" data-dismiss="modal">Cerrar</button>
+							<button type="submit" class="btn btn-info">Guardar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+		</div>
+	</div>
 {%endblock%}
+
+{% block js %}
+<script>
+	$(function() {
+		'use strict';
+
+		$('#modalAltaOpciones').on('submit', function(){
+			var post_url = $('#modalAltaOpciones').data('post-url');
+
+			var formData = new FormData(this);
+
+			var options = '<option value="">-----------</option> ';
+
+			$.ajax({
+				url: post_url,
+				type: "POST",
+				data:formData,
+				processData: false,
+				contentType: false,
+				success:function(response){
+					var message = response.content.message;
+
+					$('#snackbar').slideToggle(500);
+
+					$('#modalOpciones').modal('toggle');
+					jQuery('<i/>', {
+						id: 'some-id',
+						"class": 'far fa-check-circle',
+						title: 'now this div has a title!'
+					}).appendTo('#snackbar');
+					$(`<span>${message}</span>`).appendTo('#snackbar');
+
+
+					$('#modalOpciones').modal('toggle');
+					// ver que hay en este form y como re iniciarlo
+					console.log('FORRRRRRRRMS');
+					console.log($('form')[2]);
+					$('form')[2].reset();
+					setTimeout(function(){ 
+						$('#snackbar').slideToggle(1000); 
+					}, 3000);
+				}
+			}).done(function(data){
+				if(!data.hasOwnProperty('error')){
+					$.each(data.content.normativas, function(key, value){
+						options+='<option value="'+ value.id +'">'+value.nombre+'</option> '
+					});
+					return false
+				}
+			})
+
+			return false;
+		});
+	});
+</script>
+{% endblock %}

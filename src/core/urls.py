@@ -25,4 +25,5 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('', include('Apps.pages.urls')),
     path('Preguntas/', include('Apps.preguntas.urls')),
+    path('Jugar/', include('Apps.juego.urls')),
 ]

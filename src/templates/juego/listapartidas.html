@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if messages %}
+	{% for message in messages %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<i class="far fa-check-circle"></i> {{ message }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>            
+	{% endfor %}
+{% endif %}
+
+<div class="izq">
+	<a href="" id="nuevo_elemento" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nueva partida</a>
+</div>
+
+	 {% if listaPreguntas %}
+		<ul class="p-0 mb-5">
+				<table id="tablajs" class="table table-striped tab_resp">
+				  <thead>
+				    <tr>
+				      <th scope="col"># ID Partida</th>
+				      <th scope="col">Dificultad</th>
+				      <th scope="col">Finalizado?</th>
+				      <th scope="col">Acciones</th>
+				    </tr>
+				  </thead>
+
+				  <tbody>
+				    {% for partida in listaPartidas %}
+						<tr>	      
+							<td><a href="">{{partida.id}}</a></td>
+							<td>{{partida.get_dificultad_display}}</td>
+							<td>
+                                {% if partida.finalizado %}
+                                    Si
+                                {%else%}
+                                    No
+                                {%endif%}
+                            </td>
+							<td class="ag-alinear-texto-der">
+								<!-- Inicio Boton Acciones -->
+								<div class="dropleft">
+									<button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-cogs"></i>
+									</button>
+									
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<h6 class="dropdown-header">Acción de Juego</h6>
+										<a class="dropdown-item" href="" title="Editar Pregunta"><i class="far fa-edit"></i> Jugar</a>
+									</div>
+								</div>
+								<!-- Fin boton Acciones -->
+							</td>
+						</tr>
+				    {% endfor %}
+				  </tbody>
+				</table>
+		</ul>	
+
+{%else%}
+    <div class="mt-10">
+        <h3 class="text-secondary text-center ag-mt-10 ag-mb-10">Ud. no tiene juegos registrados aún</h3>
+    </div>
+{% endif %}
+{% endblock content %}

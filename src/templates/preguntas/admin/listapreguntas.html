@@ -8,6 +8,17 @@
 	}
 </style>
 
+{% if messages %}
+	{% for message in messages %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<i class="far fa-check-circle"></i> {{ message }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>            
+	{% endfor %}
+{% endif %}
+
 <div class="row mb-2">
     <div class="col-sm-6">
       <h1 class="m-0">Lista Preguntas</h1>
@@ -66,7 +77,7 @@
 
 {%else%}
     <div class="mt-10">
-        <h3 class="text-secondary text-center ag-mt-10 ag-mb-10">No hay Convenios Marco registrados aún</h3>
+        <h3 class="text-secondary text-center ag-mt-10 ag-mb-10">No hay Preguntas registradas aún</h3>
     </div>
 {% endif %}
 {% endblock content %}

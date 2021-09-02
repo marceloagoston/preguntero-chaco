@@ -24,13 +24,13 @@
             </div>
             
 
-            <div id="botonesNav" class="ag-centrar-todo">
+            <div id="botonesNav" class="ag-centrar-todo" style="min-width: 250px;">
                 {% if user.is_authenticated %}
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                     <form class="form-inline ml-auto" style="width: 120px; display:flex; justify-content: space-evenly;">
                         <a href="" class="btn btn-outline-secondary">Ranking</a>
-                        <!-- <a href="" class="btn btn-outline-success">¡Jugar!</a> -->
+                        <a href="{% url 'mis_partidas' %}" class="btn btn-outline-success">¡Jugar!</a>
                     </form>
                 </div>
                 
