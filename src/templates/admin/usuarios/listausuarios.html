@@ -1,0 +1,339 @@
+{% extends 'baseAdmin.html' %}
+
+{% block content %}
+
+<style>
+	#tablajs_filter{
+		overflow: hidden;
+	}
+</style>
+
+{% if messages %}
+	{% for message in messages %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<i class="far fa-check-circle"></i> {{ message }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>            
+	{% endfor %}
+{% endif %}
+
+<div class="row mb-2">
+    <div class="col-sm-6">
+      <h1 class="m-0">Lista de Usuarios</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item">Administración</li>
+        <li class="breadcrumb-item active">Usuarios</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+<!-- <div class="izq">
+	<a href="" id="nuevo_elemento" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nueva Pregunta</a>
+</div> -->
+
+	 {% if listaUsuarios %}
+		<ul class="p-0 mb-5">
+				<table id="tablajs" class="table table-striped tab_resp">
+				  <thead>
+				    <tr>
+				      <th scope="col">Nombre</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Administrador</th>
+				      <th scope="col">Acciones</th>
+				    </tr>
+				  </thead>
+
+				  <tbody>
+				    {% for usuario in listaUsuarios %}
+						<tr>	      
+							<td><a href="">
+                                {% if usuario.get_full_name %}
+                                    {{usuario.get_full_name}}
+                                {%else%}
+                                    <span class="text-secondary">No se registró</span>
+                                {%endif%}
+                            </a></td>
+							<td>
+                                {% if usuario.email %}
+                                    {{usuario.email}}
+                                {%else%}
+                                    <span class="text-secondary">No se registró</span>
+                                {%endif%}
+                            </td>
+                            <td>
+                                {% if usuario.es_admin %}
+                                    Si
+                                {% else %}
+                                    No
+                                {%endif%}
+                            </td>
+							<td class="ag-alinear-texto-der">
+								<!-- Inicio Boton Acciones -->
+								<div class="dropleft">
+									<button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fas fa-cogs"></i>
+									</button>
+									
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<h6 class="dropdown-header">Acciones de Usuario</h6>
+										<a class="dropdown-item" href="" title="Editar Usuario"><i class="fas fa-user-shield"></i> Hacer Admin.</a>
+                                        <a class="dropdown-item" href="" title="Editar Usuario"><i class="fas fa-user-slash"></i> Deshabilitar Usuario</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="" title="Eliminar Usuario"> <i class="far fa-trash-alt"></i> Eliminar Usuario</a>
+									</div>
+								</div>
+								<!-- Fin boton Acciones -->
+							</td>
+						</tr>
+				    {% endfor %}
+				  </tbody>
+				</table>
+		</ul>	
+
+{%else%}
+    <div class="mt-10">
+        <h3 class="text-secondary text-center ag-mt-10 ag-mb-10">No hay Usuarios registrados aún</h3>
+    </div>
+{% endif %}
+{% endblock content %}
+
+{%block js%}
+<script>
+	 // Inicio tabla convenio marco
+     var tablaView = $('#tablajs').DataTable({
+        orderCellsTop:true,
+        fixedHeader:true,
+        language:{
+            "processing": "Procesando...",
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "emptyTable": "Ningún dato disponible en esta tabla",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "infoThousands": ",",
+            "loadingRecords": "Cargando...",
+            "paginate": {
+                "first": "Primero",
+                "last": "Último",
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+            "aria": {
+                "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+                "sortDescending": ": Activar para ordenar la columna de manera descendente"
+            },
+            "buttons": {
+                "copy": "Copiar",
+                "colvis": "Visibilidad",
+                "collection": "Colección",
+                "colvisRestore": "Restaurar visibilidad",
+                "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+                "copySuccess": {
+                    "1": "Copiada 1 fila al portapapeles",
+                    "_": "Copiadas %d fila al portapapeles"
+                },
+                "copyTitle": "Copiar al portapapeles",
+                "csv": "CSV",
+                "excel": "Excel",
+                "pageLength": {
+                    "-1": "Mostrar todas las filas",
+                    "1": "Mostrar 1 fila",
+                    "_": "Mostrar %d filas"
+                },
+                "pdf": "PDF",
+                "print": "Imprimir"
+            },
+            "autoFill": {
+                "cancel": "Cancelar",
+                "fill": "Rellene todas las celdas con <i>%d<\/i>",
+                "fillHorizontal": "Rellenar celdas horizontalmente",
+                "fillVertical": "Rellenar celdas verticalmentemente"
+            },
+            "decimal": ",",
+            "searchBuilder": {
+                "add": "Añadir condición",
+                "button": {
+                    "0": "Constructor de búsqueda",
+                    "_": "Constructor de búsqueda (%d)"
+                },
+                "clearAll": "Borrar todo",
+                "condition": "Condición",
+                "conditions": {
+                    "date": {
+                        "after": "Despues",
+                        "before": "Antes",
+                        "between": "Entre",
+                        "empty": "Vacío",
+                        "equals": "Igual a",
+                        "notBetween": "No entre",
+                        "notEmpty": "No Vacio",
+                        "not": "Diferente de"
+                    },
+                    "number": {
+                        "between": "Entre",
+                        "empty": "Vacio",
+                        "equals": "Igual a",
+                        "gt": "Mayor a",
+                        "gte": "Mayor o igual a",
+                        "lt": "Menor que",
+                        "lte": "Menor o igual que",
+                        "notBetween": "No entre",
+                        "notEmpty": "No vacío",
+                        "not": "Diferente de"
+                    },
+                    "string": {
+                        "contains": "Contiene",
+                        "empty": "Vacío",
+                        "endsWith": "Termina en",
+                        "equals": "Igual a",
+                        "notEmpty": "No Vacio",
+                        "startsWith": "Empieza con",
+                        "not": "Diferente de"
+                    },
+                    "array": {
+                        "not": "Diferente de",
+                        "equals": "Igual",
+                        "empty": "Vacío",
+                        "contains": "Contiene",
+                        "notEmpty": "No Vacío",
+                        "without": "Sin"
+                    }
+                },
+                "data": "Data",
+                "deleteTitle": "Eliminar regla de filtrado",
+                "leftTitle": "Criterios anulados",
+                "logicAnd": "Y",
+                "logicOr": "O",
+                "rightTitle": "Criterios de sangría",
+                "title": {
+                    "0": "Constructor de búsqueda",
+                    "_": "Constructor de búsqueda (%d)"
+                },
+                "value": "Valor"
+            },
+            "searchPanes": {
+                "clearMessage": "Borrar todo",
+                "collapse": {
+                    "0": "Paneles de búsqueda",
+                    "_": "Paneles de búsqueda (%d)"
+                },
+                "count": "{total}",
+                "countFiltered": "{shown} ({total})",
+                "emptyPanes": "Sin paneles de búsqueda",
+                "loadMessage": "Cargando paneles de búsqueda",
+                "title": "Filtros Activos - %d"
+            },
+            "select": {
+                "1": "%d fila seleccionada",
+                "_": "%d filas seleccionadas",
+                "cells": {
+                    "1": "1 celda seleccionada",
+                    "_": "$d celdas seleccionadas"
+                },
+                "columns": {
+                    "1": "1 columna seleccionada",
+                    "_": "%d columnas seleccionadas"
+                }
+            },
+            "thousands": ".",
+            "datetime": {
+                "previous": "Anterior",
+                "next": "Proximo",
+                "hours": "Horas",
+                "minutes": "Minutos",
+                "seconds": "Segundos",
+                "unknown": "-",
+                "amPm": [
+                    "am",
+                    "pm"
+                ]
+            },
+            "editor": {
+                "close": "Cerrar",
+                "create": {
+                    "button": "Nuevo",
+                    "title": "Crear Nuevo Registro",
+                    "submit": "Crear"
+                },
+                "edit": {
+                    "button": "Editar",
+                    "title": "Editar Registro",
+                    "submit": "Actualizar"
+                },
+                "remove": {
+                    "button": "Eliminar",
+                    "title": "Eliminar Registro",
+                    "submit": "Eliminar",
+                    "confirm": {
+                        "_": "¿Está seguro que desea eliminar %d filas?",
+                        "1": "¿Está seguro que desea eliminar 1 fila?"
+                    }
+                },
+                "error": {
+                    "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
+                },
+                "multi": {
+                    "title": "Múltiples Valores",
+                    "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
+                    "restore": "Deshacer Cambios",
+                    "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo."
+                }
+            },
+            "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas"
+        },
+        responsive:'true',
+        dom:'Bfrtilp',
+
+        buttons:[
+          {
+            extend:'excelHtml5',
+            text: '<i class="far fa-file-excel"></i>',
+            titleAttr:'Exportar a Excel',
+            className:'btn btn-success btn-color-green btn-max-width',
+            filename: 'Lista-usuarios-Trivia-Chaco',
+            exportOptions: {
+                    // columns: [ 0, 1]
+                    columns: 'th:not(:last-child)'
+                }
+
+          },
+        ],  
+      });
+      // Fin tabla sistemas
+
+	  // Inicio buscador headers
+    //Creamos una fila en el head de la tabla y lo clonamos para cada columna
+    $('#tablajs thead tr').clone(true).appendTo( '#tablajs thead' );
+
+    $('#tablajs thead tr:eq(1) th').each( function (i) {
+      $(this)[0].removeAttribute("class");
+
+          if($(this).text() == "Acciones"){
+ 
+            $(this)[0].innerText = ''
+
+          }else{
+                    var title = $(this).text(); //es el nombre de la columna
+                    $(this).html( '<input type="text" style="width: 120%; max-width: 180px;" placeholder="Buscar '+title+'" />' );
+             
+                    $( 'input', this ).on( 'keyup change', function () {
+                        if ( tablaView.column(i).search() !== this.value ) {
+                            tablaView
+                                .column(i)
+                                .search( this.value )
+                                .draw();
+                        }
+                    } );
+                }
+      } 
+      );
+
+    // Fin buscador headers tablas
+</script>
+
+{%endblock%}
