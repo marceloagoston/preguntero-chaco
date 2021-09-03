@@ -31,13 +31,14 @@ _ Las herramientas utilizadas para desarrollar el proyecto son las siguientes: _
 
 
 
-## Autores ✒️ (agregarse y colocar lo que corresponda )
+## Autores ✒️ 
 
 * **Marcelo Agoston** - *Programacion* - [marceloagoston](https://github.com/marceloagoston)
 * **Cesar Martinetti** - *Documentación* - [SnkCesar](https://github.com/SnkCesar)
 * **Marcos Sanchez** - *Documentación* - [MarkSanch](https://github.com/MarkSanch/Comision4_Grupo3)
 * **Gladys Hardy** - *Diagram.MER y Tablas* - [GLADYSHARDY](https://github.com/GLADYSHARDY)
 * ** Rodrigo Gomez** - *Documentación* - [rg301190](https://github.com/rg301190)
+* ** Jonathan Cáceres** - *Diseño y programación-Video* - [rg301190](https://github.com/Jcaceres88)
 
 
  
