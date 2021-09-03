@@ -8,7 +8,6 @@
 </style>
 
 <div id="snackbar" class="alert alert-success text-center" role="alert" style="width: 100%; margin: auto; margin-bottom: 2%; display: none;">
-	<button type=button" class="close" data-dismiss="alert"><i class="fas fa-times"></i><button>
 </div>
 
 <div class="row mb-2">
@@ -148,21 +147,20 @@
 
 					$('#modalOpciones').modal('toggle');
 					jQuery('<i/>', {
-						id: 'some-id',
-						"class": 'far fa-check-circle',
-						title: 'now this div has a title!'
+						"class": 'fas fa-hourglass-half',
 					}).appendTo('#snackbar');
 					$(`<span>${message}</span>`).appendTo('#snackbar');
 
 
 					$('#modalOpciones').modal('toggle');
 					// ver que hay en este form y como re iniciarlo
-					console.log('FORRRRRRRRMS');
-					console.log($('form')[2]);
 					$('form')[2].reset();
+
 					setTimeout(function(){ 
 						$('#snackbar').slideToggle(1000); 
+						location.reload(); 
 					}, 3000);
+
 				}
 			}).done(function(data){
 				if(!data.hasOwnProperty('error')){

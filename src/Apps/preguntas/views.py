@@ -20,10 +20,18 @@ class PreguntaCreateView(LoginRequiredMixin, CreateView):
 	template_name = 'preguntas/admin/altapregunta.html'
 	form_class = PreguntaForm
 	login_url = 'login'
+	
+	def form_valid(self, form):
+		f = form.save(commit=True)
 
-	def get_success_url(self):
 		messages.success(self.request, "Pregunta registrada exitosamente")
-		return reverse_lazy('lista_preguntas')
+		self.success_url = reverse_lazy('editar_pregunta' , kwargs={'pk':f.id})
+		
+		return super(PreguntaCreateView, self).form_valid(form)
+
+	# def get_success_url(self):
+	# 	messages.success(self.request, "Pregunta registrada exitosamente")
+	# 	return reverse_lazy('lista_preguntas')
 
 class PreguntaUpdateView(LoginRequiredMixin, UpdateView):
 	model = Pregunta
@@ -73,6 +81,6 @@ def agregarOpcionPregunta(request, id_pregunta):
 
 	return JsonResponse({
 		'content':{
-			'message': ' Opción de pregunta registrada con éxito ',
+			'message': ' Registrando opción de pregunta... ',
 		}
 	})
