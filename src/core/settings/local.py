@@ -23,10 +23,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'preguntero-chaco',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'ypvrcfya',
+        'USER': 'ypvrcfya',
+        'PASSWORD': 'DAdPHFTtr7v3rYJuDgGN4KGYfEtsWJrF',
+        'HOST': 'tuffi.db.elephantsql.com',
         'PORT': '5432',
     }
 }

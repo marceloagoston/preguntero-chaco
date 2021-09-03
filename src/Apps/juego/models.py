@@ -20,4 +20,4 @@ class Juego(TimeStampedModel):
         db_table = 'Juegos'
         
     def __str__(self):
-        return self.id
+        return str(self.id)

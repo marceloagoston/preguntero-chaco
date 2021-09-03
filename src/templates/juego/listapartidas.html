@@ -14,17 +14,17 @@
 {% endif %}
 
 <div class="izq">
-	<a href="" id="nuevo_elemento" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nueva partida</a>
+	<a href="{% url 'nuevo_juego' %}" id="nuevo_elemento" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Nueva partida</a>
 </div>
 
-	 {% if listaPreguntas %}
+	 {% if listaPartidas %}
 		<ul class="p-0 mb-5">
 				<table id="tablajs" class="table table-striped tab_resp">
 				  <thead>
 				    <tr>
 				      <th scope="col"># ID Partida</th>
 				      <th scope="col">Dificultad</th>
-				      <th scope="col">Finalizado?</th>
+				      <th scope="col">¿Finalizado?</th>
 				      <th scope="col">Acciones</th>
 				    </tr>
 				  </thead>
@@ -42,18 +42,22 @@
                                 {%endif%}
                             </td>
 							<td class="ag-alinear-texto-der">
+                                {% if partida.finalizado %}
+                                    <span class="notexport cgris" class="icono" title="Juego finalizado"><i class="fas fa-cogs"></i></span>
+                                {%else%}
 								<!-- Inicio Boton Acciones -->
-								<div class="dropleft">
-									<button class="btn btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fas fa-cogs"></i>
-									</button>
-									
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										<h6 class="dropdown-header">Acción de Juego</h6>
-										<a class="dropdown-item" href="" title="Editar Pregunta"><i class="far fa-edit"></i> Jugar</a>
-									</div>
-								</div>
+                                    <div class="btn-group dropstart">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-cogs"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href=""> <i class="fas fa-play"></i>¡JUGAR!</a>
+                                            </li>
+                                        </ul>
+                                    </div>
 								<!-- Fin boton Acciones -->
+                                {%endif%}
 							</td>
 						</tr>
 				    {% endfor %}

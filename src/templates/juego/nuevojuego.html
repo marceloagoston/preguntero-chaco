@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<hr>
+		<form action="" method="post">{% csrf_token %}
+			{% include "includes/_form_errors.html" %}
+	        {% include "includes/_forms.html" %}
+			<hr>
+			<div class="ag-flex-space">
+				<a href="{% url 'mis_partidas' %}" class="btn btn-outline-primary ag">Cancelar</a>
+				<button class="btn btn-primary ml- ag-float-right" type="submit">Guardar</button>
+			</div>
+		
+	</form>
+{%endblock%}
