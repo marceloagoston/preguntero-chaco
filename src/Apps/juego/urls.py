@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
 	path('Mis-partidas/', views.JuegosListView.as_view(), name='mis_partidas'),
 	path('nuevo/', views.JuegoCreateView.as_view(), name='nuevo_juego'),
-	# path('Admin/editar/<int:pk>/', views.PreguntaUpdateView.as_view(), name='editar_pregunta'),
+	path('juego/<int:pk>/', views.JuegoUpdateView.as_view(), name='juego'),
 	# # path('<int:pk>/', CaracteristicasDetailView.as_view(), name='detalle_caracteristica'),
 	# path('Admin/eliminar/<int:pk>/', views.PreguntaDeleteView.as_view(), name='eliminar_pregunta'),
 

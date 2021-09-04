@@ -15,6 +15,7 @@ class Juego(TimeStampedModel):
 	    ('3','Difícil'),
     ]
     dificultad = models.CharField(max_length=1,choices=select_tipo,default='1')
+    puntos = models.PositiveBigIntegerField(default=0)
     
     class Meta:
         db_table = 'Juegos'
