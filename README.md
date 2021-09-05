@@ -2,7 +2,7 @@
 
 _El sitio contiene un ameno y divertido juego que consiste en una serie de preguntas de cultura general y sus respectivas respuestas que giran entorno a la Provincia del Chaco._
 
-_Se dispone de un cuestionario con opciones multi choise,en dónde el jugador puede elejir niveles de dificultad, pudiendo obtener su calificación y compartir éstos resultados. El administrador por su parte podrá conocer los datos personales de los participantes, como ser nombre, apellido, dirección, email,etc; asimismo podrá disponer de la carga de preguntas y respuestas en una base de datos ._
+_Se dispone de un cuestionario con opciones multiple choise,en dónde el jugador puede elegir niveles de dificultad, pudiendo obtener su calificación y compartir éstos resultados. El administrador por su parte podrá conocer los datos personales de los participantes, como ser nombre, apellido, dirección, email,etc; asimismo podrá disponer de la carga de preguntas y respuestas en una base de datos ._
 
 ### Pasos para crear un Proyecto: 📋
 
@@ -91,9 +91,9 @@ _Instalar las dependencias del proyecto mediante la carpeta requirements o como 
   (ve_mientorno) C:\....\nombre_proyecto\requirements>pip install -r base.txt 
   ```
   hago un "pip list" para ver lo que tengo instalado.
-  _Salgo de la carp. "requirements"y voy a la carpeta "src o como la llame", a partir de alli creo mi carpeta "apps"donde voy a crear mis aplicaciones._
+  _Salgo de la carp. "requirements"y voy a la carpeta "src o como la llame", a partir de allí creo mi carpeta "apps"donde voy a crear mis aplicaciones._
 
-#### Creacion de apps : pasos a seguir: 📋
+#### Creación de apps : pasos a seguir: 📋
 
 Las apps nos permiten crear módulos independientes con todo lo referente a un tema.
 
@@ -108,7 +108,7 @@ con "startapp" creo la app "nombre_app"'.
 															_, ,_
 
 
-Otro tema importante a tener en cuenta es la configuración del archivo local.py que es propio de cada desarrollador. Ahí se deberá tener encuenta los datos propios para conectar la base de datos y el conector correspondiente.
+Otro tema importante a tener en cuenta es la configuración del archivo local.py que es propio de cada desarrollador. Ahí se deberá tener en cuenta los datos propios para conectar la base de datos y el conector correspondiente.
 
 Configuración local.py desde la importación .base *
 
